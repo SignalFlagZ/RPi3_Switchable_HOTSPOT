@@ -26,7 +26,7 @@ Search line "map ESSID1" .
 
 Replace ESSID1 to your essid.
 
-Also register ESSID2,ESSID3...
+Also replace ESSID2,ESSID3... if you want.
 
 ###4.Reboot RPi.
 
