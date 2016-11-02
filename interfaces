@@ -1,0 +1,42 @@
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+iface eth0 inet manual
+
+allow-hotplug wlan0
+mapping wlan0
+  script /usr/local/bin/apscan.sh
+  map YOUR_ESSID1 home
+# map YOUR_ESSID2 home
+# map YOUR_ESSID3 office
+  map hotspot0
+
+allow-hotplug wlan1
+iface wlan1 inet manual
+    post-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
+    pre-down wpa_cli -i $IFACE terminate
+
+iface home inet manual
+    post-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
+    pre-down wpa_cli -i"$IFACE" terminate
+
+#iface office inet manual
+#   post-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
+#   pre-down wpa_cli -i"$IFACE" terminate
+
+iface hotspot0 inet static
+  address 192.168.42.1
+  netmask 255.255.255.0
+  pre-up sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+  pre-up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+  pre-up iptables -A FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
+  pre-up iptables -A FORWARD -i "$IFACE" -o eth0 -j ACCEPT
+  post-up service hostapd start /etc/hostapd/hostapd.conf
+  post-up service udhcpd start
+  pre-down service udhcpd stop
+  pre-down service hostapd stop
+  post-down iptables --flush
+  post-down sh -c "echo 0 > /proc/sys/net/ipv4/ip_forward"
+  
