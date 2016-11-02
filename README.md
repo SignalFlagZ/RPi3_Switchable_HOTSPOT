@@ -13,7 +13,7 @@ git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git
 
 cd RPi3_Switchable_HOTSPOT
 
-1. Excute installer.
+2. Excute installer.
 
 ./install.sh
 
