@@ -21,7 +21,7 @@ sudo sed -i.bak -e "s/^\(DHCPD_ENABLED\).*/#\1/g" /etc/default/udhcpd
 echo 'Setting hostapd.'
 sudo cp hostapd.conf /etc/hostapd/
 sudo cp /etc/default/hostapd /etc/default/hostapd.bk
-sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
+echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' | sudo tee -a /etc/default/hostapd
 #
 echo 'Disable services auto start .'
 sudo systemctl disable hostapd
