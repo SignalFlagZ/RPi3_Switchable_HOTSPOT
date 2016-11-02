@@ -36,5 +36,5 @@ sudo cp apscan.sh /usr/local/bin/
 #
 echo -e '\n\n### installation process is completed. ###\n'
 echo 'Please register your AP\'s essid.'
-echo 'Edit /etc/network/interfaces.'
+echo 'Edit /etc/network/interfaces .'
 echo 'Replace "ESSID1" to your essid.'
