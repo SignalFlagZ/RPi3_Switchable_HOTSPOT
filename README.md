@@ -19,34 +19,28 @@ cd RPi3_Switchable_HOTSPOT
 
 1. Register your AP's essid to /etc/network/interfaces .
 
-Open /etc/network/interfaces in editor.
+Open `/etc/network/interfaces` in editor.
 
-Search line `map YOUR_ESSID1` .
-
-Replace `YOUR_ESSID1` to your essid.
-
+Search line `map YOUR_ESSID1` .  
+Replace `YOUR_ESSID1` to your essid.  
 Also replace `YOUR_ESSID2`,`YOUR_ESSID3`... if you want.
 
 1. Configure HOTSPOT
 
-Default HOTSPOT essid : My_AP
+Default HOTSPOT essid : `My_AP`  
+Default HOTSPOT password : `My_Passphrase`
 
-Default HOTSPOT password : My_Passphrase
-
-If you want to change this ID, edit /etc/hostapd/hostapd.conf and replace them.
+If you want to change this ID, edit `/etc/hostapd/hostapd.conf` and replace them.
 
 1. Reboot RPi.
 
 ## Usage
 ### To change HOTSPOT mode
-sudo ifdown wlan0
-
-sudo ifup wlan0=hotspot0
+`sudo ifdown wlan0`  
+`sudo ifup wlan0=hotspot0`
 ### To change Client mode
-sudo ifdown wlan0
-
-sudo ifup wlan0=home
+`sudo ifdown wlan0`  
+`sudo ifup wlan0=home`
 ### Scan and auto set
-sudo ifdown wlan0
-
-sudo ifup wlan0
+`sudo ifdown wlan0`  
+`sudo ifup wlan0`
