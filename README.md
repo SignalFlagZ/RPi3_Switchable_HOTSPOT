@@ -8,7 +8,7 @@ Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 ### Download scripts.
 
 `git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git`  
-'cd RPi3_Switchable_HOTSPOT  '
+`cd RPi3_Switchable_HOTSPOT`
 ### Excute installer.
 `./install.sh`
 ### Register your AP's essid to /etc/network/interfaces .
