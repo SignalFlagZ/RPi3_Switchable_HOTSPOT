@@ -7,7 +7,7 @@ Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 
 It make easy to switch between client mode and AP mode. Scanning APs on boot up and auto-switch wifi mode.
 
-##Install
+##Installation
 ###1.Download scripts.
 
 git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git
