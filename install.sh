@@ -7,22 +7,31 @@
 # Copyright (c) 2016, Signal Flag "Z"  All rights reserved.
 #
 cd `dirname $0`
+echo 'Update.'
 sudo apt-get update
 sudo apt-get -y upgrade
 #
+echo 'Setting udhcpd.conf...'
 sudo mv /etc/udhcpd.conf /etc/udhcpd.conf.bk
 sudo cp udhcpd.conf /etc/
 #
+echo 'Enable DHCPD.'
 sudo sed -i.bak -e "s/^\(DHCPD_ENABLED\).*/#\1/g" /etc/default/udhcpd
 #
+echo 'Setting hostapd.'
 sudo cp hostapd.conf /etc/hostapd/
 sudo cp /etc/default/hostapd /etc/default/hostapd.bk
 sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 #
+echo 'Disable services auto start .'
 sudo systemctl disable hostapd
 sudo systemctl disable udhcpd
 #
+echo 'Setting interfaces.'
 sudo cp /etc/network/interfaces /etc/network/interfaces.bk
 sudo cp interfaces /etc/network/
 #
+echo 'Copy a script used in interfaces.'
 sudo cp apscan.sh /usr/local/bin/
+#
+echo 'installation process is completed.'
