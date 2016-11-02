@@ -12,5 +12,12 @@ sudo cp udhcpd.conf /etc/udhcpd.conf
 sudo sed -i.bak -e "s/^\(DHCPD_ENABLED\).*/#\1/g" /etc/default/udhcpd
 
 #
+sudo cp hostapd.conf /etc/hostapd/hostapd.conf
+sudo cp /etc/default/hostapd /etc/default/hostapd.bk
+sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
+
+#
+sudo systemctl disable hostapd
+sudo systemctl disable udhcpd
 
 
