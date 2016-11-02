@@ -31,8 +31,8 @@ iface hotspot0 inet static
   netmask 255.255.255.0
   pre-up sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
   pre-up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-  pre-up iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-  pre-up iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+  pre-up iptables -A FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
+  pre-up iptables -A FORWARD -i "$IFACE" -o eth0 -j ACCEPT
   post-up service hostapd start /etc/hostapd/hostapd.conf
   post-up service udhcpd start
   pre-down service udhcpd stop
