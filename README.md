@@ -21,11 +21,11 @@ cd RPi3_Switchable_HOTSPOT
 
 Open /etc/network/interfaces in editor.
 
-Search line "map ESSID1" .
+Search line "map YOUR_ESSID1" .
 
-Replace ESSID1 to your essid.
+Replace YOUR_ESSID1 to your essid.
 
-Also replace ESSID2,ESSID3... if you want.
+Also replace YOUR_ESSID2,YOUR_ESSID3... if you want.
 
 ###4.Reboot RPi.
 
