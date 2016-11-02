@@ -13,11 +13,11 @@ git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git
 
 cd RPi3_Switchable_HOTSPOT
 
-2. Excute installer.
+1. Excute installer.
 
 ./install.sh
 
-3. Register your AP's essid to /etc/network/interfaces .
+1. Register your AP's essid to /etc/network/interfaces .
 
 Open /etc/network/interfaces in editor.
 
@@ -27,7 +27,7 @@ Replace YOUR_ESSID1 to your essid.
 
 Also replace YOUR_ESSID2,YOUR_ESSID3... if you want.
 
-4. Configure HOTSPOT
+1. Configure HOTSPOT
 
 Default HOTSPOT essid : My_AP
 
@@ -35,7 +35,7 @@ Default HOTSPOT password : My_Passphrase
 
 If you want to change this ID, edit /etc/hostapd/hostapd.conf and replace them.
 
-5. Reboot RPi.
+1. Reboot RPi.
 
 ## Usage
 ### To change HOTSPOT mode
