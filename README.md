@@ -21,6 +21,8 @@ Default HOTSPOT essid : `My_AP`
 Default HOTSPOT password : `My_Passphrase`  
 If you want to change this ID, edit `/etc/hostapd/hostapd.conf` and replace them.
 ### Reboot RPi.
+You should reboot RPi.
+`sudo reboot`
 ## Usage
 If registered essid was found at boot up, WiFi was configured client mode. Otherwise WiFi was configured HOTSPOT mode.  
 This script does not perform the authentication of the essid. Use wpa_supplicant or desktop applications for authentication.
@@ -33,3 +35,6 @@ This script does not perform the authentication of the essid. Use wpa_supplicant
 ### Scan and auto set
 `sudo ifdown wlan0`  
 `sudo ifup wlan0`
+### Force HOTSPOT
+Make text file `usr/local/bin/hotspot_var`.  
+Edit it and write a letter `1` in first line.
