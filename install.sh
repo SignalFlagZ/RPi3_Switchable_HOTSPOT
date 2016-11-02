@@ -43,5 +43,5 @@ echo 'Usage:'
 echo 'Start scan APs and auto change the WiFi mode'
 echo 'sudo ifdown wlan0; sudo ifup wlan0'
 echo -e '\nChange to HOTSPOT.'
-echo -e '\nsudo ifdown wlan0; sudo ifup wlan0=hotspot0'
+echo  'sudo ifdown wlan0; sudo ifup wlan0=hotspot0'
 
