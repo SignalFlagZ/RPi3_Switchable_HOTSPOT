@@ -9,9 +9,9 @@ allow-hotplug wlan0
 mapping wlan0
   script /usr/local/bin/apscan.sh
   map YOUR_ESSID1 home
-  map hotspot0
 # map YOUR_ESSID2 home
 # map YOUR_ESSID3 office
+  map hotspot0
 
 allow-hotplug wlan1
 iface wlan1 inet manual
