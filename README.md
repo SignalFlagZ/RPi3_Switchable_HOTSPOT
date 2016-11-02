@@ -2,7 +2,7 @@
 
 ## Introduction
 This is the configuration script to set up HOTSPOT for Raspberry Pi 3.  
-It make easy to switch between client mode and AP mode. Scanning essids and auto-configure wifi mode at boot up.  
+It makes easy to switch between client mode and AP mode. Scanning essids and auto-configure wifi mode at boot up.  
 Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 ## Installation
 ### Download scripts.
@@ -22,7 +22,7 @@ Default HOTSPOT password : `My_Passphrase`
 If you want to change this ID, edit `/etc/hostapd/hostapd.conf` and replace them.
 ### Reboot RPi.
 ## Usage
-If registered essid was found at boot up, WiFi configured client mode. Otherwise WiFi configured HOTSPOT mode.  
+If registered essid was found at boot up, WiFi was configured client mode. Otherwise WiFi was configured HOTSPOT mode.  
 This script does not perform the authentication of the essid. Use wpa_supplicant or desktop applications for authentication.
 ### To change HOTSPOT mode
 `sudo ifdown wlan0`  
