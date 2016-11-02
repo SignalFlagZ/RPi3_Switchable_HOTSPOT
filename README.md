@@ -5,22 +5,22 @@ This is the configuration script to set up HOTSPOT for RASPBIAN JESSIE WITH PIXE
 It makes easy to switch between client mode and HOTSPOT mode. Scanning essids and auto-configure wifi mode at boot up.  
 Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 ## Installation
-### Download scripts.
-
-`git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git`
-### Excute installer.
+Download scripts.  
+`git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git`  
 `cd RPi3_Switchable_HOTSPOT`  
 `./install.sh`
-### Register your essid(s).
+
+Register your essid(s).
 Open `/etc/network/interfaces` in editor.  
 Search line `map YOUR_ESSID1` .  
 Replace `YOUR_ESSID1` to your essid.  
 Also replace `YOUR_ESSID2`,`YOUR_ESSID3`... if you want.
-### Configure HOTSPOT
+
+Configure HOTSPOT
 Default HOTSPOT essid : `My_AP`  
 Default HOTSPOT password : `My_Passphrase`  
 If you want to change this ID, edit `/etc/hostapd/hostapd.conf` and replace them.
-### Reboot RPi.
+
 You should reboot RPi.
 `sudo reboot`
 ## Usage
