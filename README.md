@@ -1,6 +1,6 @@
 # RPi3_Switchable_HOTSPOT
 
-##Introduction:
+##Introduction
 This is the configuration script to set up HOTSPOT for Raspberry Pi 3.
 
 Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
