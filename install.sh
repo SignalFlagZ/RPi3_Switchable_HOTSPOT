@@ -1,5 +1,9 @@
 #!/bin/bash
 # Install RPi3_Switchable_HOTSPOT
+# Nov. 1 2016
+# Signal Flag "Z"
+# https://signal-flag-z.blogspot.com/
+# Copyright (c) 2016, Signal Flag "Z"  All rights reserved.
 #
 cd `dirname $0`
 sudo apt-get update
