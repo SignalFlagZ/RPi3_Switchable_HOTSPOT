@@ -20,4 +20,7 @@ sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 sudo systemctl disable hostapd
 sudo systemctl disable udhcpd
 
+#
+sudo cp /etc/network/interfaces /etc/network/interfaces.bk
+sudo cp interfaces /etc/network/interfaces
 
