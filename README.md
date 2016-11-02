@@ -11,7 +11,7 @@ Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 ### Excute installer.
 `cd RPi3_Switchable_HOTSPOT`  
 `./install.sh`
-### Register your AP's essid to /etc/network/interfaces .
+### Register your essid(s).
 Open `/etc/network/interfaces` in editor.  
 Search line `map YOUR_ESSID1` .  
 Replace `YOUR_ESSID1` to your essid.  
