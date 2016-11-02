@@ -16,7 +16,7 @@ Search line `map YOUR_ESSID1` .
 Replace `YOUR_ESSID1` to your essid.  
 Also replace `YOUR_ESSID2`,`YOUR_ESSID3`... if you want.
 
-Configure HOTSPOT
+Configure HOTSPOT.  
 Default HOTSPOT essid : `My_AP`  
 Default HOTSPOT password : `My_Passphrase`  
 If you want to change this ID, edit `/etc/hostapd/hostapd.conf` and replace them.
