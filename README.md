@@ -7,13 +7,13 @@ It make easy to switch between client mode and AP mode. Scanning essids and auto
 
 Configurations are based on : http://elinux.org/RPI-Wireless-Hotspot
 ##Installation
-1. Download scripts.
+* Download scripts.
 
 git clone https://github.com/SignalFlagZ/RPi3_Switchable_HOTSPOT.git
 
 cd RPi3_Switchable_HOTSPOT
 
-2. Excute installer.
+1. Excute installer.
 
 ./install.sh
 
@@ -21,11 +21,11 @@ cd RPi3_Switchable_HOTSPOT
 
 Open /etc/network/interfaces in editor.
 
-Search line "map YOUR_ESSID1" .
+Search line 'map YOUR_ESSID1' .
 
-Replace YOUR_ESSID1 to your essid.
+Replace 'YOUR_ESSID1' to your essid.
 
-Also replace YOUR_ESSID2,YOUR_ESSID3... if you want.
+Also replace 'YOUR_ESSID2','YOUR_ESSID3'... if you want.
 
 1. Configure HOTSPOT
 
