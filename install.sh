@@ -11,6 +11,10 @@ echo 'Update.'
 sudo apt-get update
 sudo apt-get -y upgrade
 #
+echo 'Install hostapd, udhcpd and iptables.'
+sudo apt-get install -y hostapd udhcpd
+sudo apt-get install -y iptables
+#
 echo 'Setting udhcpd.conf...'
 sudo mv /etc/udhcpd.conf /etc/udhcpd.conf.bk
 sudo cp udhcpd.conf /etc/
