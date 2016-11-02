@@ -35,13 +35,6 @@ echo 'Copy a script for interfaces.'
 sudo cp apscan.sh /usr/local/bin/
 #
 echo -e '\n\n### installation process is completed. ###\n'
-echo 'Please register the ESSID.'
-echo 'Open /etc/network/interfaces.'
+echo 'Please register your AP\'s essid.'
+echo 'Edit /etc/network/interfaces.'
 echo 'Replace "ESSID1" to your essid.'
-#
-echo 'Usage:'
-echo 'Start scan APs and auto change the WiFi mode'
-echo 'sudo ifdown wlan0; sudo ifup wlan0'
-echo -e '\nChange to HOTSPOT.'
-echo  'sudo ifdown wlan0; sudo ifup wlan0=hotspot0'
-
