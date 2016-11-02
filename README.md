@@ -26,10 +26,10 @@ You should reboot RPi.
 ## Usage
 If registered essid was found at boot up, WiFi was configured client mode. Otherwise WiFi was configured HOTSPOT mode.  
 This script does not perform the authentication of the essid. Use wpa_supplicant or desktop applications for authentication.
-### To change HOTSPOT mode
+### Change to HOTSPOT mode
 `sudo ifdown wlan0`  
 `sudo ifup wlan0=hotspot0`
-### To change Client mode
+### Change to Client mode
 `sudo ifdown wlan0`  
 `sudo ifup wlan0=home`
 ### Scan and auto set
