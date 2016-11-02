@@ -15,17 +15,17 @@ cd RPi3_Switchable_HOTSPOT
 
 1. Excute installer.
 
-./install.sh
+`./install.sh`
 
 1. Register your AP's essid to /etc/network/interfaces .
 
 Open /etc/network/interfaces in editor.
 
-Search line 'map YOUR_ESSID1' .
+Search line `map YOUR_ESSID1` .
 
-Replace 'YOUR_ESSID1' to your essid.
+Replace `YOUR_ESSID1` to your essid.
 
-Also replace 'YOUR_ESSID2','YOUR_ESSID3'... if you want.
+Also replace `YOUR_ESSID2`,`YOUR_ESSID3`... if you want.
 
 1. Configure HOTSPOT
 
