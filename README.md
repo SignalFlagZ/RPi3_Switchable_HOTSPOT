@@ -36,5 +36,5 @@ This script does not perform the authentication of the essid. Use wpa_supplicant
 `sudo ifdown wlan0`  
 `sudo ifup wlan0`
 ### Force HOTSPOT
-Make a text file `usr/local/bin/hotspot_var`.  
+Make a text file `/usr/local/bin/hotspot_var`.  
 Edit it and write a letter `1` in first line.
