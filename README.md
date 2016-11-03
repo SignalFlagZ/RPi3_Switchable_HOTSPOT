@@ -10,7 +10,7 @@ Download scripts.
 `cd RPi3_Switchable_HOTSPOT`  
 `./install.sh`
 
-Register your essid(s).
+Register your essid(s).  
 Open `/etc/network/interfaces` in editor.  
 Search line `map YOUR_ESSID1` .  
 Replace `YOUR_ESSID1` to your essid.  
