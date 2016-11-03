@@ -46,7 +46,7 @@ echo 'Copy a script for interfaces.'
 sudo cp apscan.sh /usr/local/bin/
 echo 'Done.'
 #
-echo -e '\n\n### installation process is completed. ###\n'
+echo -e '\n\n### Installation is completed. ###\n'
 echo "Please register your AP\'s essid to the file."
 echo 'Edit /etc/network/interfaces .'
 echo 'Replace "ESSID1" to your essid.'
