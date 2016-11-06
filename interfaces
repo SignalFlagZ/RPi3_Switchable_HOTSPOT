@@ -37,8 +37,8 @@ iface hotspot0 inet static
   post-up service udhcpd start
   pre-down service udhcpd stop
   pre-down service hostapd stop
-  pre-up iptables -D FORWARD -i "$IFACE" -o eth0 -j ACCEPT
-  pre-up iptables -D FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
-  pre-up iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+  post-down iptables -D FORWARD -i "$IFACE" -o eth0 -j ACCEPT
+  post-down iptables -D FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
+  post-down iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
   post-down sh -c "echo 0 > /proc/sys/net/ipv4/ip_forward"
   
