@@ -26,19 +26,50 @@ iface home inet manual
 #   pre-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
 #   post-down wpa_cli -i"$IFACE" terminate
 
+# Hotspot settings wlan0 and eth0
 iface hotspot0 inet static
   address 192.168.42.1
   netmask 255.255.255.0
-  pre-up sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
-  pre-up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-  pre-up iptables -A FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
-  pre-up iptables -A FORWARD -i "$IFACE" -o eth0 -j ACCEPT
-  post-up service hostapd start /etc/hostapd/hostapd.conf
-  post-up service udhcpd start
-  pre-down service udhcpd stop
-  pre-down service hostapd stop
-  post-down iptables -D FORWARD -i "$IFACE" -o eth0 -j ACCEPT
-  post-down iptables -D FORWARD -i eth0 -o "$IFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
-  post-down iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-  post-down sh -c "echo 0 > /proc/sys/net/ipv4/ip_forward"
-  
+  post-up ifup nat0
+  post-up ifup services0
+  pre-down ifdown services0
+  pre-down ifdown nat0
+
+# Hotspot settings wlan0 & ppp0
+iface hotspot1 inet static
+  address 192.168.42.1
+  netmask 255.255.255.0
+  post-up ifup nat1
+  post-up ifup services0
+  pre-down ifdown services0
+  pre-down ifdown nat1
+
+# Nat eth0
+iface nat0 inet manual
+  up sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+  up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+  up iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  up iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+  down iptables -D FORWARD -i wlan0 -o eth0 -j ACCEPT
+  down iptables -D FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  down iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+  down sh -c 'echo 0 > /proc/sys/net/ipv4/ip_forward'
+
+# Nat ppp0
+iface nat1 inet manual
+  up sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+  up iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+  up iptables -A FORWARD -i ppp0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  up iptables -A FORWARD -i wlan0 -o ppp0 -j ACCEPT
+  down iptables -D FORWARD -i wlan0 -o ppp0 -j ACCEPT
+  down iptables -D FORWARD -i ppp0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  down iptables -t nat -D POSTROUTING -o ppp0 -j MASQUERADE
+  down sh -c 'echo 0 > /proc/sys/net/ipv4/ip_forward'
+
+# Hotspot services
+iface services0 inet manual
+  up service hostapd start /etc/hostapd/hostapd.conf
+  up service udhcpd start
+  down service udhcpd stop
+  down service hostapd stop
+
