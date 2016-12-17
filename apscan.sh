@@ -5,7 +5,6 @@
 # Copyright (c) 2016, Signal Flag "Z"  All rights reserved.
 set -e
 export LANG=C
-
 iface="$1"
 APs=("")
 ret=""
@@ -14,22 +13,34 @@ hotspot=""
 # Scan APs
 sudo ip link set dev "$iface" up
 sleep 1
+IFS=$'\n' 
 APs=$(sudo iw "$iface" scan ap-force | grep -ioP '(?<=ssid:\ ).+(?=$)')
+#echo ${APs[@]}
 sudo ip link set dev "$iface" down
 
+#for APssid in "${APs[@]}"; do
+#echo "$APssid"
+#done
+
 # Search config_nmae
+IFS=$','
 while read essid conf; do
+  #echo A:"$essid"
+  #echo B:"$conf"
   if [ ! -n "$conf" ] 
   then
     hotspot="$essid"
   else
+    IFS=$'\n'
     for APssid in ${APs[@]}; do
-      if [ $essid = $APssid ] && [ ! "$ret" ]
+      #echo C:"$APssid"
+      if [ "$essid" = "$APssid" ] && [ ! "$ret" ]
       then
-          ret="$conf"
+        ret="$conf"
       fi
     done
   fi
+  IFS=$','
 done
 
 # Check hotspot_var.
