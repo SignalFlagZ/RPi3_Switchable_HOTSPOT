@@ -6,15 +6,49 @@
 # https://signal-flag-z.blogspot.com/
 # Copyright (c) 2016, Signal Flag "Z"  All rights reserved.
 #
+
+echo Select LAN interface.
+iFaces=(`ls /sys/class/net/ | grep -e ^e`)
+if [ ${#iFaces[*]} = 1 ]; then
+  lanNAME=${iFaces[@]};
+else
+  select VAL in ${iFaces[@]}
+  do
+    if [ $REPLY -le ${#iFaces[*]} ]; then
+      lanNAME=$VAL;
+      break;
+    fi
+    echo 'Select correct number.'
+  done
+fi
+echo You select "$lanNAME" .;
+
+echo Select WiFi interface.
+iFaces=(`ls /sys/class/net/ | grep -e ^e`)
+if [ ${#iFaces[*]} = 1 ]; then
+  wifiNAME=${iFaces[@]};
+else
+  select VAL in ${iFaces[@]}
+  do
+    if [ $REPLY -le ${#iFaces[*]} ]; then
+      wifiNAME=$VAL;
+      break;
+    fi
+    echo 'Select correct number.'
+  done
+fi
+echo You select "$wifiNAME" .;
+
+
 cd `dirname $0`
 echo 'Update.'
-sudo apt-get update
-sudo apt-get -y upgrade
+sudo apt update -y
+sudo apt upgrade -y
 echo 'Done.'
 #
 echo 'Install hostapd, udhcpd and iptables.'
-sudo apt-get install -y hostapd udhcpd
-sudo apt-get install -y iptables
+sudo apt install -y hostapd udhcpd
+sudo apt install -y iptables
 echo 'Done.'
 #
 echo 'Setting udhcpd.conf...'
