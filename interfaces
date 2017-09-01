@@ -3,6 +3,7 @@ source-directory /etc/network/interfaces.d
 auto lo
 iface lo inet loopback
 
+allow-hotplug eth0
 iface eth0 inet manual
 
 allow-hotplug wlan0

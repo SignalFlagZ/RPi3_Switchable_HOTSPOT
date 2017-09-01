@@ -53,6 +53,7 @@ echo 'Done.'
 #
 echo 'Setting udhcpd.conf...'
 sudo mv /etc/udhcpd.conf /etc/udhcpd.conf.bk
+sed -i s/wlan0/$wifiNAME/ udhcpd.conf
 sudo cp udhcpd.conf /etc/
 echo 'Done.'
 #
@@ -61,6 +62,7 @@ sudo sed -i.bak -e "s/^\(DHCPD_ENABLED\).*/#\1/g" /etc/default/udhcpd
 echo 'Done.'
 #
 echo 'Setting hostapd.'
+sed -i s/wlan0/$wifiNAME/ hostapd.conf
 sudo cp hostapd.conf /etc/hostapd/
 sudo cp /etc/default/hostapd /etc/default/hostapd.bk
 echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' | sudo tee -a /etc/default/hostapd
@@ -73,6 +75,8 @@ echo 'Done.'
 #
 echo 'Setting interfaces.'
 sudo cp /etc/network/interfaces /etc/network/interfaces.bk
+sed -i s/wlan0/$wifiNAME/ hostapd.conf
+sed -i s/eth0/$lanNAME/ hostapd.conf
 sudo cp interfaces /etc/network/
 echo 'Done.'
 #
