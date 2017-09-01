@@ -24,7 +24,7 @@ fi
 echo You select "$lanNAME" .;
 
 echo Select WiFi interface.
-iFaces=(`ls /sys/class/net/ | grep -e ^e`)
+iFaces=(`ls /sys/class/net/ | grep -e ^w`)
 if [ ${#iFaces[*]} = 1 ]; then
   wifiNAME=${iFaces[@]};
 else
