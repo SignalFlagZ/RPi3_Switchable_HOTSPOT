@@ -75,8 +75,8 @@ echo 'Done.'
 #
 echo 'Setting interfaces.'
 sudo cp /etc/network/interfaces /etc/network/interfaces.bk
-sed -i s/wlan0/$wifiNAME/ hostapd.conf
-sed -i s/eth0/$lanNAME/ hostapd.conf
+sed -i s/wlan0/$wifiNAME/ interfaces
+sed -i s/eth0/$lanNAME/ interfaces
 sudo cp interfaces /etc/network/
 echo 'Done.'
 #
