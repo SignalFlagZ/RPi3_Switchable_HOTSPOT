@@ -35,7 +35,7 @@ lanNAME=`selectInterface "^e"` || { echo 'No LAN interface.'; exit 1; }
 echo You select "$lanNAME" .
 
 echo Select WiFi interface.
-wifiNAME=`selectInterface "^e"` || { echo 'No WiFi interface.'; exit 1; }
+wifiNAME=`selectInterface "^wl"` || { echo 'No WiFi interface.'; exit 1; }
 echo You select "$wifiNAME" .
 
 
