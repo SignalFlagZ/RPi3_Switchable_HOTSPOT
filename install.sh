@@ -7,37 +7,36 @@
 # Copyright (c) 2016-2017, Signal Flag "Z"  All rights reserved.
 #
 
+# Select Interface
+# arg1: argument for grep
+function selectInterface() {
+  local iFaces=(`ls /sys/class/net/ | grep $1`)
+  local VAL=""
+  if [ ${#iFaces[*]} = 0 ]; then return 1; fi
+  if [ ${#iFaces[*]} = 1 ]; then
+    echo ${iFaces[@]};
+  else
+    select VAL in ${iFaces[@]}
+    do
+      if [ $REPLY -le "0" ]; then
+          continue;
+      fi
+      if [ $REPLY -le ${#iFaces[*]} ]; then
+        echo $VAL
+        break
+      fi
+    done
+  fi
+  return 0
+}
+
 echo Select LAN interface.
-iFaces=(`ls /sys/class/net/ | grep -e ^e`)
-if [ ${#iFaces[*]} = 1 ]; then
-  lanNAME=${iFaces[@]};
-else
-  select VAL in ${iFaces[@]}
-  do
-    if [ $REPLY -le ${#iFaces[*]} ]; then
-      lanNAME=$VAL;
-      break;
-    fi
-    echo 'Select correct number.'
-  done
-fi
-echo You select "$lanNAME" .;
+lanNAME='selectInterface "^e"'|| { echo 'No LAN interface.'; exit 1; }
+echo You select "$lanNAME" .
 
 echo Select WiFi interface.
-iFaces=(`ls /sys/class/net/ | grep -e ^w`)
-if [ ${#iFaces[*]} = 1 ]; then
-  wifiNAME=${iFaces[@]};
-else
-  select VAL in ${iFaces[@]}
-  do
-    if [ $REPLY -le ${#iFaces[*]} ]; then
-      wifiNAME=$VAL;
-      break;
-    fi
-    echo 'Select correct number.'
-  done
-fi
-echo You select "$wifiNAME" .;
+wifiNAME=lanNAME='selectInterface "^e"'|| { echo 'No WiFi interface.'; exit 1; }
+echo You select "$wifiNAME" .
 
 
 cd `dirname $0`
