@@ -31,11 +31,11 @@ function selectInterface() {
 }
 
 echo Select LAN interface.
-lanNAME='selectInterface "^e"'|| { echo 'No LAN interface.'; exit 1; }
+lanNAME=`selectInterface "^e"` || { echo 'No LAN interface.'; exit 1; }
 echo You select "$lanNAME" .
 
 echo Select WiFi interface.
-wifiNAME=lanNAME='selectInterface "^e"'|| { echo 'No WiFi interface.'; exit 1; }
+wifiNAME=`selectInterface "^e"` || { echo 'No WiFi interface.'; exit 1; }
 echo You select "$wifiNAME" .
 
 
