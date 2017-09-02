@@ -84,5 +84,5 @@ echo 'Done.'
 #
 echo -e '\n\n### Installation is completed. ###\n'
 echo "Please register your AP\'s essid to the file."
-echo 'Edit /etc/network/interfaces .'
+echo 'Edit /etc/network/interfaces.d/hotspot.cfg .'
 echo 'Replace "ESSID1" to your essid.'
