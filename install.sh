@@ -73,9 +73,9 @@ sudo systemctl disable udhcpd
 echo 'Done.'
 #
 echo 'Setting interfaces.'
-sudo cp interfaces /etc/network/interfaces.d/hotspot.cfg
-sudo sed -i s/wlan0/$wifiNAME/g /etc/network/interfaces.d/hotspot.cfg
-sudo sed -i s/eth0/$lanNAME/g /etc/network/interfaces.d/hotspot.cfg
+sudo cp interfaces /etc/network/interfaces.d/hotspot
+sudo sed -i s/wlan0/$wifiNAME/g /etc/network/interfaces.d/hotspot
+sudo sed -i s/eth0/$lanNAME/g /etc/network/interfaces.d/hotspot
 echo 'Done.'
 #
 echo 'Copy a script for interfaces.'
@@ -84,5 +84,5 @@ echo 'Done.'
 #
 echo -e '\n\n### Installation is completed. ###\n'
 echo "Please register your AP\'s essid to the file."
-echo 'Edit /etc/network/interfaces.d/hotspot.cfg .'
+echo 'Edit /etc/network/interfaces.d/hotspot .'
 echo 'Replace "ESSID1" to your essid.'
