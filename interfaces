@@ -30,12 +30,12 @@ iface home inet manual
 iface hotspot0 inet static
   address 192.168.42.1
   netmask 255.255.255.0
-  pre-up systemctl stop dhcpcd.service
+  pre-up service dhcpcd stop
   post-up ifup nat0
   post-up ifup services0
   pre-down ifdown services0
   pre-down ifdown nat0
-  post-up systemctl start dhcpcd.service
+  post-down service dhcpcd start
 
 # Nat eth0
 iface nat0 inet manual
