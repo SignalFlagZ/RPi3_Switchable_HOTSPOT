@@ -11,7 +11,7 @@ Download scripts.
 `./install.sh`
 
 Register your essid(s).  
-Open `/etc/network/interfaces` in editor.  
+Open `/etc/network/interfaces.d/hotspot` in editor.  
 Search line `map YOUR_ESSID1` .  
 Replace `YOUR_ESSID1` to your essid.  
 Also replace `YOUR_ESSID2`,`YOUR_ESSID3`... if you want.
