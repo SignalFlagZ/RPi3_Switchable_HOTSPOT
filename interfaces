@@ -2,7 +2,7 @@
 auto lo
 iface lo inet loopback
 
-allow-hotplug eth0
+#allow-hotplug eth0
 iface eth0 inet manual
 
 allow-hotplug wlan0
@@ -13,18 +13,13 @@ mapping wlan0
 # map YOUR_ESSID3,office
   map hotspot0
 
-allow-hotplug wlan1
-iface wlan1 inet manual
-    pre-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
-    post-down wpa_cli -i $IFACE terminate
-
 iface home inet manual
-    pre-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
-    post-down wpa_cli -i"$IFACE" terminate
+  post-up service dhcpcd restart
+  post-down service dhcpcd restart
 
 #iface office inet manual
-#   pre-up wpa_supplicant -B -i"$IFACE" -c/etc/wpa_supplicant/wpa_supplicant.conf
-#   post-down wpa_cli -i"$IFACE" terminate
+#  post-up service dhcpcd restart
+#  post-down service dhcpcd restart
 
 # Hotspot settings wlan0 and eth0
 iface hotspot0 inet static
@@ -33,9 +28,10 @@ iface hotspot0 inet static
   pre-up service dhcpcd stop
   post-up ifup nat0
   post-up ifup services0
+  post-up service dhcpcd restart
   pre-down ifdown services0
   pre-down ifdown nat0
-  post-down service dhcpcd start
+  post-down service dhcpcd restart
 
 # Nat eth0
 iface nat0 inet manual
